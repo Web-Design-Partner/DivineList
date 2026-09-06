@@ -1,0 +1,90 @@
+{
+  "version": "divinelist.identity-observations.v1",
+  "seedSha256": "sha256:6f6987e02c37437b67385bba4c61faa50447f61db9dbe1bc00aa4b0d2f289f14",
+  "records": [
+    {
+      "sourceRecordId": "CAND:wave-001:cafeva-haga",
+      "checkedAt": "2026-09-04T11:48:32Z",
+      "sources": [
+        {
+          "url": "https://www.cafeva.se/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/cafeva-ab-nuzelovij",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Agentbedömning från reports/identity-review/2026-09-04-packet-001.md. Avser endast Haga Nygata 5E, inte systerkaféet. Bolagskoppling 556348-1489 stöds av katalog, inte direkt registerbevis. Ny skrivskyddad dubblett-/spärrkontroll 2026-09-04T11:48:32Z: inga kandidatmatchningar, manual DNC=0, contact_suppressions=0 och contact_candidates=0 i aktuell engine-v2.sqlite3. Clear gäller endast denna runtime, inte andra CRM/register. Se reports/identity-review/2026-09-04-packet-001-local-check.md. Ingen kontaktbehörighet eller runtimeverifikation."
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:aktiv-halsa-goteborg",
+      "checkedAt": "2026-09-04T13:14:44Z",
+      "sources": [
+        {
+          "url": "https://aktivhalsagbg.com/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:14:44Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/aktiv-halsa-goteborg-ab-klrbzakqr",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:14:44Z"
+        },
+        {
+          "url": "https://www.allabolag.se/foretag/aktiv-h%C3%A4lsa-g%C3%B6teborg-ab/g%C3%B6teborg/h%C3%A4lsotj%C3%A4nster/2KJEMONI63IHB",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:14:44Z"
+        },
+        {
+          "url": "https://en.syna.se/companypublic/5595483479/aktiv-halsa-goteborg-ab",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:14:44Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "unresolved",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Lokal agentbedömning, inte runtime- eller mänskligt granskningsbeslut. Källkontrollen 2026-09-04T13:12:18Z–13:14:44Z stödjer klinikens existens och adress; egen webbplats gav direkt bara iframe, medan egen indextext nämner kliniken. Hitta binder bolag 559548-3479, domän och klinikens besöksadress. Andra kataloger anger en alternativ adress i delvis motstridiga adressroller; denna adress sparas inte. Identity supported och workplace unresolved bevaras. Läs-/åtkomsttid är inte innehållets publicerings- eller uppdateringstid, ingen full rendering eller förseglad auditevidens påstås. Lokal runtimekontroll 2026-09-04T13:13:56.411673Z: kandidat-ID saknas, ingen träff rapporterad i tidigare lokalt underlag, alla tre lokala spärrytor noll; scope inte andra CRM. Researchpausen kräver inget rutinbeslut av användaren. Se reports/identity-review/2026-09-04-packet-001-paused.md.",
+      "researchPause": {
+        "reason": "Avgränsad källkontroll 2026-09-04: klinikadressen stöds men sambandet med bolagets registrerade arbetsställe är fortsatt oklart. Katalogernas adressroller kan inte säkert förklaras som enbart postadress kontra besöksadress.",
+        "resumeWhen": "Nytt offentligt förstapartsunderlag som uttryckligen binder 559548-3479 till kliniken på Otterhällegatan 2, eller officiellt arbetsställeunderlag för samma bolag och klinik. Då gör agenten en ny källbedömning och ny dubblett-/spärrkontroll; ingen automatisk runtimeverifikation."
+      }
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:goteborgs-glasmasteri",
+      "checkedAt": "2026-09-04T11:48:32Z",
+      "sources": [
+        {
+          "url": "https://www.goteborgsglasmasteri.se/kontakta/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.hitta.se/f%C3%B6retagsinformation/g%C3%B6teborgs%2Bglasm%C3%A4steri%2Bab/5561465229",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "out_of_scope",
+      "note": "Lokal agentdisposition: fortsatt parkerad för nuvarande konsumenttjänstpilot eftersom egen kontaktsida hänvisar privatärenden vidare. Ingen permanent exkludering eller ändring i runtime. Identitetsunderlaget och adressen bevaras; MP Glas eller annan domän ska inte slås ihop med kandidaten. Ny skrivskyddad dubblett-/spärrkontroll 2026-09-04T11:48:32Z: inga kandidatmatchningar, manual DNC=0, contact_suppressions=0 och contact_candidates=0 i aktuell engine-v2.sqlite3. Clear gäller endast denna runtime, inte andra CRM/register. Se reports/identity-review/2026-09-04-packet-001-local-check.md. Ingen kontaktbehörighet eller runtimeverifikation."
+    }
+  ]
+}
+

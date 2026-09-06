@@ -1,0 +1,26 @@
+{
+  "version": "divinelist.import-sequence-manifest.v1",
+  "packets": [
+    {
+      "packetId": "packet-001",
+      "seedPath": "C:/Users/cozys/AppData/Local/WebDesignPartner/Foretagskarta/source-staging/2026-08-31/company-seeds-001.json",
+      "seedSha256": "sha256:6f6987e02c37437b67385bba4c61faa50447f61db9dbe1bc00aa4b0d2f289f14",
+      "observationsPath": "reports/autonomy-inputs/packet-001-observations-2026-09-04-paused.json",
+      "observationsSha256": "sha256:7b9b21b5c26edf20415feca8213507fb5e108cb6ffb80d1e64fd441c3e14a296"
+    },
+    {
+      "packetId": "packet-002",
+      "seedPath": "reports/autonomy-inputs/packet-002-company-seeds-2026-09-04.json",
+      "seedSha256": "sha256:63ee716ee3db1befc90b0a9d205f9a8206afb5c7d51cea3d7d2a1f1941c3a8fe",
+      "observationsPath": "reports/autonomy-inputs/packet-002-observations-2026-09-04.json",
+      "observationsSha256": "sha256:6ac3987e080f2164de340c40d6b959c5e1d4866e7a86e7aa24ed751346cd5348"
+    },
+    {
+      "packetId": "packet-003",
+      "seedPath": "reports/autonomy-inputs/packet-003-company-seeds-2026-09-04.json",
+      "seedSha256": "sha256:0446edc59d07675f5159c3b64f86f6bc22e58351eeb0736f14252f9f43e8910d",
+      "observationsPath": "reports/autonomy-inputs/packet-003-observations-2026-09-04.json",
+      "observationsSha256": "sha256:9159f415a7025d90f0422b0738587309d4e94a06e4cded9eb0bda258a1424cbb"
+    }
+  ]
+}

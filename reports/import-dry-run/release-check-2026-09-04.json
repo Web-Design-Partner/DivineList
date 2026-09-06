@@ -1,0 +1,126 @@
+{
+  "schema": "divinelist.release-check.v1",
+  "appVersion": "2.3.0",
+  "status": "PASS",
+  "startedAt": "2026-09-04T12:18:58.994Z",
+  "finishedAt": "2026-09-04T12:20:31.362Z",
+  "runtime": {
+    "node": "v24.15.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "steps": [
+    {
+      "id": "audit-tests",
+      "command": "npm run test:audit",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 10479
+    },
+    {
+      "id": "release-automation-tests",
+      "command": "npm run test:release",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 13305
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 7284
+    },
+    {
+      "id": "lint",
+      "command": "npm run lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 3222
+    },
+    {
+      "id": "format",
+      "command": "npm run format:check",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 2568
+    },
+    {
+      "id": "build",
+      "command": "npm run build",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 35992
+    },
+    {
+      "id": "release-artifacts",
+      "command": "npm run verify:release",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 1173
+    },
+    {
+      "id": "production-smoke",
+      "command": "npm run smoke:production",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationMs": 18222
+    }
+  ],
+  "artifacts": {
+    "buildId": "66ddd941-0b0a-4c7c-a44d-e85c25466789",
+    "sourceFingerprint": "sha256:9f790497263c6a54a9bbe3b7d045007ba0bf6a499a356fbbe36fb94e3f52e82e",
+    "sourceFileCount": 71,
+    "clientJavaScriptFiles": 10,
+    "contractFiles": 5,
+    "artifactSetHash": "sha256:f3e0343e58348c5105c1bcd59fd4bd1d48f59a02b00e2aaed03421d487ce24de",
+    "files": [
+      {
+        "path": "dist/contracts-v23-final/divinelist-contract-manifest.json",
+        "bytes": 1693,
+        "sha256": "sha256:9608db1465675e3deb19a66f73dd131aa198192905393875e7897939117b0e46"
+      },
+      {
+        "path": "dist/contracts-v23-final/divinelist-dataset-hash-v2.json",
+        "bytes": 1484,
+        "sha256": "sha256:027cb767aae9cfbfda7dfc3acb9a94048911e13aae29060c55847e16f8e31da2"
+      },
+      {
+        "path": "dist/contracts-v23-final/divinelist-evaluation-policy-v2.json",
+        "bytes": 7738,
+        "sha256": "sha256:8f476296ad7d930889db5cff72127e57676965b9619814d52b35303e3d23988b"
+      },
+      {
+        "path": "dist/contracts-v23-final/divinelist-facts-v2.json",
+        "bytes": 72436,
+        "sha256": "sha256:54606bae639a32967ef7aa65d09a44f9c5f1ded81e8fe64f16a545109eb63291"
+      },
+      {
+        "path": "dist/contracts-v23-final/divinelist-rules-v2.json",
+        "bytes": 170323,
+        "sha256": "sha256:6061295bf108082ab3f45fbadf1b86343652cd14575104b7cd773d41ea5d8a52"
+      },
+      {
+        "path": "dist/divinelist-build-manifest-v1.json",
+        "bytes": 12103,
+        "sha256": "sha256:ba94c780a64af43df1a9ffae0fd818058e3f3d2daccb2dba7d4380ab3ef71f2d"
+      },
+      {
+        "path": "dist/server/BUILD_ID",
+        "bytes": 36,
+        "sha256": "sha256:abc27a8e48ae6e6555b6784625d93fb70290a01482f48132198f327a2120ae61"
+      },
+      {
+        "path": "dist/server/index.js",
+        "bytes": 236523,
+        "sha256": "sha256:13fa23ebe1e1740a7e2efe4d0c7923152f9fd88fb5ecaf204383f25c35f302b5"
+      },
+      {
+        "path": "dist/server/wrangler.json",
+        "bytes": 1182,
+        "sha256": "sha256:75d3e49ca5b801df32137cb0d58175fe986e0f97e5d96a496e00f89802e60a47"
+      }
+    ]
+  },
+  "reportHash": "sha256:a0e3f052f02b228780c1305524cc54a813ac206365188fe0dae50b0d6fa15f1f"
+}

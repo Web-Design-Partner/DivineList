@@ -1,0 +1,39 @@
+{
+  "version": "divinelist.identity-observations.v1",
+  "seedSha256": "sha256:0446edc59d07675f5159c3b64f86f6bc22e58351eeb0736f14252f9f43e8910d",
+  "records": [
+    {
+      "sourceRecordId": "CAND:wave-001:massageterapeuten-stigbergsliden-5",
+      "checkedAt": "2026-09-04T14:05:16.866512Z",
+      "sources": [
+        {
+          "url": "https://www.massageterapeuten-gbg.se/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T14:01:53Z"
+        },
+        {
+          "url": "https://www.massageterapeuten-gbg.se/massage-majorna-goteborg",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T14:01:44Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/daniel-nasman-massageterapeuten-goteborg-ab-moopxeaq",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T14:01:53Z"
+        },
+        {
+          "url": "https://www.allabolag.se/foretag/daniel-n%C3%A4sman-massageterapeuten-g%C3%B6teborg-ab/g%C3%B6teborg/h%C3%A4lsotj%C3%A4nster/2KIK417I63IHB",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T14:01:44Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Lokal agentbedömning för AB 559405-9627 och mottagningen Stigbergsliden 5, 414 63 Göteborg. Egen webbplats binder bolags-/organisationsuppgift och domän till adressen; särskild mottagningssida beskriver besöksplatsen. Hittas specifika AB-post och Allabolag stödjer samma bolagsnummer/adress. Namnlika katalogpost på 5 B sammanblandas inte med den valda AB-posten. Katalogens breda SNI-rubrik ersätter inte förstapartens faktiska verksamhetsbeskrivning. Källor är direkt läst webverktygstext, inte full rendering eller förseglad auditevidens; åtkomsttid är inte publicerings-/uppdateringstid. Ingen bedömning av medicinsk effekt, legitimation eller formellt registrantägande görs. Readonly kontroll 2026-09-04T14:05:16.866512Z gav noll runtime- och stagingmatchningar; 25/25/17 runtime, sex tidigare staging-ID:n och alla tre lokala spärrytor noll. Gäller inte andra CRM/externa spärrregister och är inte kontakt- eller importtillstånd. Runtimefält förblir olösta. Se reports/identity-review/2026-09-04-packet-003.md."
+    }
+  ]
+}

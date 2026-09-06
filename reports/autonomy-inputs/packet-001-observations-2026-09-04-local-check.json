@@ -1,0 +1,80 @@
+{
+  "version": "divinelist.identity-observations.v1",
+  "seedSha256": "sha256:6f6987e02c37437b67385bba4c61faa50447f61db9dbe1bc00aa4b0d2f289f14",
+  "records": [
+    {
+      "sourceRecordId": "CAND:wave-001:cafeva-haga",
+      "checkedAt": "2026-09-04T11:48:32Z",
+      "sources": [
+        {
+          "url": "https://www.cafeva.se/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/cafeva-ab-nuzelovij",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Agentbedömning från reports/identity-review/2026-09-04-packet-001.md. Avser endast Haga Nygata 5E, inte systerkaféet. Bolagskoppling 556348-1489 stöds av katalog, inte direkt registerbevis. Ny skrivskyddad dubblett-/spärrkontroll 2026-09-04T11:48:32Z: inga kandidatmatchningar, manual DNC=0, contact_suppressions=0 och contact_candidates=0 i aktuell engine-v2.sqlite3. Clear gäller endast denna runtime, inte andra CRM/register. Se reports/identity-review/2026-09-04-packet-001-local-check.md. Ingen kontaktbehörighet eller runtimeverifikation."
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:aktiv-halsa-goteborg",
+      "checkedAt": "2026-09-04T11:48:32Z",
+      "sources": [
+        {
+          "url": "https://aktivhalsagbg.com/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/aktiv-halsa-goteborg-ab-klrbzakqr",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.allabolag.se/foretag/aktiv-h%C3%A4lsa-g%C3%B6teborg-ab/g%C3%B6teborg/h%C3%A4lsotj%C3%A4nster/2KJEMONI63IHB",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "unresolved",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Agentbedömning från identitetsrapporten. Klinikadressen stöds, men adressrollerna mellan källor är inte klarlagda. Förstapartsuppgiften är indexerad söktext, inte fullständigt verifierad rendering. Ingen negativ webbplatssignal. Ny skrivskyddad dubblett-/spärrkontroll 2026-09-04T11:48:32Z: inga kandidatmatchningar, manual DNC=0, contact_suppressions=0 och contact_candidates=0 i aktuell engine-v2.sqlite3. Clear gäller endast denna runtime, inte andra CRM/register. Se reports/identity-review/2026-09-04-packet-001-local-check.md. Ingen kontaktbehörighet eller runtimeverifikation."
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:goteborgs-glasmasteri",
+      "checkedAt": "2026-09-04T11:48:32Z",
+      "sources": [
+        {
+          "url": "https://www.goteborgsglasmasteri.se/kontakta/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        },
+        {
+          "url": "https://www.hitta.se/f%C3%B6retagsinformation/g%C3%B6teborgs%2Bglasm%C3%A4steri%2Bab/5561465229",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T10:59:39.000Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "out_of_scope",
+      "note": "Lokal agentdisposition: fortsatt parkerad för nuvarande konsumenttjänstpilot eftersom egen kontaktsida hänvisar privatärenden vidare. Ingen permanent exkludering eller ändring i runtime. Identitetsunderlaget och adressen bevaras; MP Glas eller annan domän ska inte slås ihop med kandidaten. Ny skrivskyddad dubblett-/spärrkontroll 2026-09-04T11:48:32Z: inga kandidatmatchningar, manual DNC=0, contact_suppressions=0 och contact_candidates=0 i aktuell engine-v2.sqlite3. Clear gäller endast denna runtime, inte andra CRM/register. Se reports/identity-review/2026-09-04-packet-001-local-check.md. Ingen kontaktbehörighet eller runtimeverifikation."
+    }
+  ]
+}

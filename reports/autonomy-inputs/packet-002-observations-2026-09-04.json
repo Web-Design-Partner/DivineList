@@ -1,0 +1,106 @@
+{
+  "version": "divinelist.identity-observations.v1",
+  "seedSha256": "sha256:63ee716ee3db1befc90b0a9d205f9a8206afb5c7d51cea3d7d2a1f1941c3a8fe",
+  "records": [
+    {
+      "sourceRecordId": "CAND:wave-001:pino-studio-viktoriagatan-4",
+      "checkedAt": "2026-09-04T13:25:28.989644Z",
+      "sources": [
+        {
+          "url": "https://pinostudio.se/kontakt/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:17:52Z"
+        },
+        {
+          "url": "https://pinostudio.se/om-oss/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:17:52Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/studio-pino-ab-jgsekngqr",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:17:52Z"
+        },
+        {
+          "url": "https://www.hitta.se/5594764432/f%C3%B6retag/2",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:18:14Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Endast salongen på Viktoriagatan 4. Egen kontaktsida binder Pino Studio till Studio Pino AB, 559476-4432, adress och domän. Hitta stödjer samma bolag och besöksadress, men länkar inte själv domänen. Katalogens ytterligare boxpost ska inte bli en andra salong. Inget officiellt arbetsställebevis eller runtimeverifiering. Gemensam skrivskyddad kontroll 2026-09-04T13:25:28.989644Z: inga identifierade namn/org/domän/adress/ID/aliasmatchningar i aktuell 25/25/17-runtime eller 3 äldre stagingkandidater inklusive parkerade. Alla tre lokala spärrytor noll. Omfattar inte andra CRM/externa spärrlistor; ingen kontaktbehörighet. Källornas åtkomsttider är lästider, inte publiceringstid, full rendering eller förseglad auditevidens. Se reports/identity-review/2026-09-04-packet-002.md."
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:mug-kaserntorget-9",
+      "checkedAt": "2026-09-04T13:25:28.989644Z",
+      "sources": [
+        {
+          "url": "https://www.mug.se/pages/besok-butiken",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:23:00Z"
+        },
+        {
+          "url": "https://www.mug.se/policies/terms-of-service",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:23:00Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/musik-utan-granser-hb-nnvilcnv",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:22:29Z"
+        },
+        {
+          "url": "https://www.bolagsfakta.se/9164469695-MUSIK_UTAN_GRANSER_HANDELSBOLAG",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:23:00Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Endast butiken på Kaserntorget 9. Förstapartens butikssida anger adressen, egna villkor anger Musik Utan Gränser HB, Hitta binder bolaget till mug.se och Bolagsfaktas arbetsställesdel anger samma HB 916446-9695 och besöksadress 9. Kaserntorget 6 är bolags-/leveransadress och ingår inte som ett valt arbetsställe. Katalogens arbetsställenummer är inte direkt officiellt verifierat eller infört i V1-seed. Gemensam skrivskyddad kontroll 2026-09-04T13:25:28.989644Z: inga identifierade namn/org/domän/adress/ID/aliasmatchningar i aktuell 25/25/17-runtime eller 3 äldre stagingkandidater inklusive parkerade. Alla tre lokala spärrytor noll. Omfattar inte andra CRM/externa spärrlistor; ingen kontaktbehörighet. Källornas åtkomsttider är lästider, inte publiceringstid, full rendering eller förseglad auditevidens. Se reports/identity-review/2026-09-04-packet-002.md."
+    },
+    {
+      "sourceRecordId": "CAND:wave-001:olles-glasmasteri-lunden",
+      "checkedAt": "2026-09-04T13:25:28.989644Z",
+      "sources": [
+        {
+          "url": "https://ollesglas.se/om-oss/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:17:54Z"
+        },
+        {
+          "url": "https://ollesglas.se/tjanster/inramningar/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:17:54Z"
+        },
+        {
+          "url": "https://ollesglas.se/",
+          "role": "first_party",
+          "retrievedAt": "2026-09-04T13:17:43Z"
+        },
+        {
+          "url": "https://www.hitta.se/verksamhet/olles-glasmasteri-ab-kgvefffc",
+          "role": "business_directory",
+          "retrievedAt": "2026-09-04T13:17:54Z"
+        }
+      ],
+      "identity": "supported",
+      "workplace": "scoped",
+      "municipality": "supported",
+      "duplicate": "clear",
+      "suppression": "clear",
+      "segment": "in_scope",
+      "note": "Endast Schéelegatan 1, Lunden. Egen företagspresentation och Hitta binder Olles Glasmästeri AB 556200-1627 till samma adress/domän. Egen indexerad startsida nämner privatpersoner; läst tjänstesida beskriver inramning och reparation för hemmet. Startsidan gav timeout och www-variant stoppades vid direktöppning; inget kringgående, ingen negativ webbplatssignal. Ingen relation till Göteborgs Glasmästeri eller MP Glas antas. Gemensam skrivskyddad kontroll 2026-09-04T13:25:28.989644Z: inga identifierade namn/org/domän/adress/ID/aliasmatchningar i aktuell 25/25/17-runtime eller 3 äldre stagingkandidater inklusive parkerade. Alla tre lokala spärrytor noll. Omfattar inte andra CRM/externa spärrlistor; ingen kontaktbehörighet. Källornas åtkomsttider är lästider, inte publiceringstid, full rendering eller förseglad auditevidens. Se reports/identity-review/2026-09-04-packet-002.md."
+    }
+  ]
+}
+

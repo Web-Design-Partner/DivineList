@@ -1,0 +1,54 @@
+{
+  "schema_version": "foretagskarta.company-seeds.v1",
+  "wave_id": "wave-001",
+  "generated_at": "2026-09-04T14:06:27.7877402Z",
+  "mode": "local_candidate_staging",
+  "candidate_count": 1,
+  "database_import_performed": false,
+  "algorithm_evaluation_performed": false,
+  "human_decision_required": true,
+  "data_policy": {
+    "company_level_public_data_only": true,
+    "personal_contacts_included": false,
+    "outreach_authorized": false,
+    "advertising_authorized": false
+  },
+  "deduplication_baseline": {
+    "runtime_id": "foretagskarta-local-v2.3-current",
+    "checked_at": "2026-09-04T14:05:16.866512Z",
+    "inventory_count": 25,
+    "result": "no_identified_runtime_or_cross_packet_match",
+    "limitations": [
+      "Read-only engine-v2.sqlite3: 25 companies, 25 workplaces, 17 stored websites; no match for supplied business/legal names, AB organization number, source ID, normalized domain or public workplace address.",
+      "Cross-packet check covered original source-staging and all five existing reports/autonomy-inputs JSON files, together six unique previous candidates including both parked records.",
+      "Stigbergsliden 5 B was checked only as a possible public comparison alias, not a chosen workplace or assumed legal identity.",
+      "All three local suppression surfaces were zero. This does not cover other CRM, unknown external aliases or external suppression lists and grants no contact authority.",
+      "Public source text is local preparation evidence, not sealed audit evidence, direct official workplace verification or a medical assessment.",
+      "Packet-003 completes only the five-segment local preparation selection if its checks pass; macro-wave runtime/export/review acceptance remains separate."
+    ]
+  },
+  "records": [
+    {
+      "source_record_id": "CAND:wave-001:massageterapeuten-stigbergsliden-5",
+      "company_name": "Massageterapeuten Göteborg",
+      "workplace_name": "Massageterapeuten Göteborg — Stigbergsliden 5",
+      "street_address": "Stigbergsliden 5",
+      "postal_code": "414 63",
+      "municipality_code": "1480",
+      "gothenburg_status": "unresolved",
+      "verification_status": "unresolved",
+      "needs_manual_review": true,
+      "verification_note": "stable_workplace_identifier_not_registry_verified; legal_identity_not_runtime_verified",
+      "segment": "hälsa/friskvård",
+      "website": "https://www.massageterapeuten-gbg.se/",
+      "domain_status": "unresolved",
+      "domain_confidence": 0,
+      "source_url": "https://www.massageterapeuten-gbg.se/massage-majorna-goteborg",
+      "evidence_urls": [
+        "https://www.massageterapeuten-gbg.se/",
+        "https://www.massageterapeuten-gbg.se/massage-majorna-goteborg"
+      ],
+      "observed_at": "2026-09-04T14:01:53Z"
+    }
+  ]
+}

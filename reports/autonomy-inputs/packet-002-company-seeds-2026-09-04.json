@@ -1,0 +1,98 @@
+{
+  "schema_version": "foretagskarta.company-seeds.v1",
+  "wave_id": "wave-001",
+  "generated_at": "2026-09-04T13:27:34.0065236Z",
+  "mode": "local_candidate_staging",
+  "candidate_count": 3,
+  "database_import_performed": false,
+  "algorithm_evaluation_performed": false,
+  "human_decision_required": true,
+  "data_policy": {
+    "company_level_public_data_only": true,
+    "personal_contacts_included": false,
+    "outreach_authorized": false,
+    "advertising_authorized": false
+  },
+  "deduplication_baseline": {
+    "runtime_id": "foretagskarta-local-v2.3-current",
+    "checked_at": "2026-09-04T13:25:28.989644Z",
+    "inventory_count": 25,
+    "result": "no_identified_runtime_or_cross_packet_match",
+    "limitations": [
+      "Read-only engine-v2.sqlite3: 25 companies, 25 workplaces, 17 stored websites; exact names/legal aliases/org numbers/source IDs/domain aliases/redirects and accent-normalized public addresses checked.",
+      "Cross-packet scope: original source-staging packet-001 and reports/autonomy-inputs, including parked candidates; four JSON files still represented only three unique earlier candidate IDs.",
+      "All three local suppression surfaces were zero. Clear does not cover other CRM or external registries and is not contact authorization.",
+      "Public web text/index access is not a sealed audit artifact or direct official registry verification. Runtime identity and domain flags stay unresolved.",
+      "Packet-002 continues macro wave-001. Neither local staging nor a memory dry-run closes macro-wave runtime/export/review acceptance."
+    ]
+  },
+  "records": [
+    {
+      "source_record_id": "CAND:wave-001:pino-studio-viktoriagatan-4",
+      "company_name": "Pino Studio",
+      "workplace_name": "Pino Studio — Viktoriagatan 4",
+      "street_address": "Viktoriagatan 4",
+      "postal_code": "411 25",
+      "municipality_code": "1480",
+      "gothenburg_status": "unresolved",
+      "verification_status": "unresolved",
+      "needs_manual_review": true,
+      "verification_note": "stable_workplace_identifier_not_registry_verified; legal_identity_not_runtime_verified",
+      "domain_status": "unresolved",
+      "domain_confidence": 0,
+      "segment": "frisör/skönhet",
+      "website": "https://pinostudio.se/",
+      "source_url": "https://pinostudio.se/kontakt/",
+      "evidence_urls": [
+        "https://pinostudio.se/kontakt/",
+        "https://pinostudio.se/om-oss/"
+      ],
+      "observed_at": "2026-09-04T13:17:52Z"
+    },
+    {
+      "source_record_id": "CAND:wave-001:mug-kaserntorget-9",
+      "company_name": "MUG – Musik Utan Gränser",
+      "workplace_name": "MUG — Kaserntorget 9",
+      "street_address": "Kaserntorget 9",
+      "postal_code": "411 18",
+      "municipality_code": "1480",
+      "gothenburg_status": "unresolved",
+      "verification_status": "unresolved",
+      "needs_manual_review": true,
+      "verification_note": "stable_workplace_identifier_not_registry_verified; legal_identity_not_runtime_verified",
+      "domain_status": "unresolved",
+      "domain_confidence": 0,
+      "segment": "specialbutik/annan lokal konsumenttjänst",
+      "website": "https://www.mug.se/",
+      "source_url": "https://www.mug.se/pages/besok-butiken",
+      "evidence_urls": [
+        "https://www.mug.se/pages/besok-butiken",
+        "https://www.mug.se/policies/terms-of-service"
+      ],
+      "observed_at": "2026-09-04T13:23:00Z"
+    },
+    {
+      "source_record_id": "CAND:wave-001:olles-glasmasteri-lunden",
+      "company_name": "Olles Glasmästeri AB",
+      "workplace_name": "Olles Glasmästeri — Lunden",
+      "street_address": "Schéelegatan 1",
+      "postal_code": "416 60",
+      "municipality_code": "1480",
+      "gothenburg_status": "unresolved",
+      "verification_status": "unresolved",
+      "needs_manual_review": true,
+      "verification_note": "stable_workplace_identifier_not_registry_verified; legal_identity_not_runtime_verified",
+      "domain_status": "unresolved",
+      "domain_confidence": 0,
+      "segment": "hantverk/hemservice",
+      "website": "https://ollesglas.se/",
+      "source_url": "https://ollesglas.se/om-oss/",
+      "evidence_urls": [
+        "https://ollesglas.se/om-oss/",
+        "https://ollesglas.se/tjanster/inramningar/"
+      ],
+      "observed_at": "2026-09-04T13:17:54Z"
+    }
+  ]
+}
+

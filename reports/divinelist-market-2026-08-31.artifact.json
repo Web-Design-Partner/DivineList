@@ -1,0 +1,505 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "DivineList – marknadsbedömning",
+    "description": "Beslutsrapport om marknad, positionering, prissättning och ett första betalt test för DivineList i Sverige.",
+    "generatedAt": "2026-08-31T12:00:00.000Z",
+    "sources": [
+      {
+        "id": "market-model",
+        "label": "Modell: 37 498 svenska företag med 10–249 sysselsatta × 90,2 % webbplatsandel × antagen köparandel × pris; EC SME Fact Sheet 2025 och Eurostat isoc_ciweb",
+        "href": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/22286.pdf",
+        "query": {
+          "engine": "SQLite",
+          "language": "sql",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "Reproducerbar scenariofråga. 31 802 små och 5 696 medelstora företag kommer från Sweden SME Fact Sheet 2025; 90,2 procents webbplatsandel kommer från Eurostat isoc_ciweb 2025. Köparandel och pris är synliga antaganden.",
+          "sql": "WITH inputs AS (SELECT 31802 AS small_firms, 5696 AS medium_firms, 0.902 AS website_share), scenarios(scenario, buyer_share, average_price_sek) AS (VALUES ('Låg', 0.02, 2000), ('Bas', 0.05, 4000), ('Hög', 0.10, 7500)) SELECT scenario, ROUND((small_firms + medium_firms) * website_share) AS addressable_sites, buyer_share * 100 AS buyer_share_pct, average_price_sek, ROUND((small_firms + medium_firms) * website_share * buyer_share) AS estimated_buyers, ROUND((small_firms + medium_firms) * website_share * buyer_share * average_price_sek / 1000000.0, 2) AS annual_market_msek FROM inputs CROSS JOIN scenarios;",
+          "tables_used": [
+            "European Commission Sweden SME Fact Sheet 2025",
+            "Eurostat isoc_ciweb 2025"
+          ],
+          "metric_definitions": [
+            "Adressbara webbplatser = (små företag + medelstora företag) × webbplatsandel.",
+            "Årlig marknadspool = adressbara webbplatser × antagen köparandel × antaget snittpris."
+          ]
+        }
+      },
+      {
+        "id": "price-scan",
+        "label": "Publika prissidor: Ahrefs, Screaming Frog, Sajtanalys, Webperf, SynligWebb och Webb+; kontrollerade 31 augusti 2026",
+        "href": "https://webperf.se/premium-audit/",
+        "query": {
+          "engine": "SQLite",
+          "language": "sql",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "SQL-frågan materialiserar de sex manuellt granskade raderna från leverantörernas publika prissidor; den skapar ingen oberoende prisstatistik.",
+          "sql": "WITH benchmarks(offer, price, delivery, sort_order) AS (VALUES ('Ahrefs Free', '0 kr', '170+ tekniska och on-page SEO-problem för verifierade sajter; 5 000 crawl credits per månad', 1), ('Screaming Frog SEO Spider', '0 kr / £199 per år', '500 URL:er gratis; licens tar bort gränsen och öppnar avancerad konfiguration', 2), ('Sajtanalys', '199 kr', 'Svensk rapport med 13 områden och rekommendationer via e-post', 3), ('Webperf Premium Audit', '2 000 kr exkl. moms', 'Automatisk audit av upp till 1 000 sidor, sex områden och rådata', 4), ('SynligWebb SEO-revision', '6 000 kr', 'Teknisk SEO, on-page, konkurrenter och backlinks i PDF-rapport', 5), ('Svenskt uppgivet SEO-auditspann', '10 000–30 000 kr', 'Leverantörsuppgivet typiskt projektpris för teknisk plus innehållsmässig audit', 6)) SELECT offer, price, delivery, sort_order AS \"order\" FROM benchmarks ORDER BY sort_order;",
+          "tables_used": [
+            "https://ahrefs.com/webmaster-tools",
+            "https://www.screamingfrog.co.uk/seo-spider/faq/",
+            "https://sajtanalys.se/",
+            "https://webperf.se/premium-audit/",
+            "https://synligwebb.se/priser/",
+            "https://webbplus.se/vad-kostar-seo/"
+          ]
+        }
+      },
+      {
+        "id": "divinelist-status",
+        "label": "DivineList V2.3 — README, produktionsstatus och lokala kontroller",
+        "query": {
+          "engine": "local-repository-review",
+          "language": "typescript-and-markdown",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "Granskning av produktkontrakt och aktuell status, kompletterad med en ny lokal körning av auditregressioner och TypeScript-typkontroll.",
+          "tables_used": [
+            "README.md",
+            "docs/PRODUCTION_V2.md",
+            "npm run test:audit: 78 av 78 PASS den 31 augusti 2026",
+            "npx tsc --noEmit: PASS den 31 augusti 2026"
+          ]
+        }
+      },
+      {
+        "id": "local-demand",
+        "label": "Business Region Göteborg — Fakta och statistik 2026/27",
+        "href": "https://www.businessregiongoteborg.se/analys-omvarld/rapport-analys/goteborgsregionens-fakta-statistik",
+        "query": {
+          "engine": "public-web-research",
+          "language": "web",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "Lokalt marknadssammanhang: 132 618 arbetsställen i Göteborgsregionen 2025 och 8 530 nystartade företag under året.",
+          "tables_used": [
+            "Business Region Göteborg, Fakta och statistik 2026/27"
+          ]
+        }
+      },
+      {
+        "id": "accessibility-demand",
+        "label": "PTS — tillsyn av e-handelstjänsters tillgänglighet",
+        "href": "https://pts.se/nyheter-och-pressmeddelanden/pts-granskar-ytterligare-11-e-handelstjansters-tillganglighet/",
+        "query": {
+          "engine": "public-web-research",
+          "language": "web",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "PTS uppger att tillgänglighetslagen började gälla den 28 juni 2025 och att myndigheten bedriver tillsyn av bland annat e-handelstjänster under 2025–2026.",
+          "tables_used": [
+            "Post- och telestyrelsen, planlagd tillsyn av e-handelstjänster"
+          ]
+        }
+      },
+      {
+        "id": "unit-economics",
+        "label": "Scenarioformel: pris − (leveranstimmar × 500 kr) − rörlig kostnad; före säljtid, skatt och fasta kostnader",
+        "query": {
+          "engine": "SQLite",
+          "language": "sql",
+          "executed_at": "2026-08-31T12:00:00.000Z",
+          "description": "Reproducerbar bidragskalkyl med 500 kr per arbetstimme som ekonomisk kostnad. Försäljningstid, skatt och fasta kostnader är exkluderade.",
+          "sql": "WITH assumptions(case_name, price_sek, hours, variable_cost_sek, sort_order) AS (VALUES ('Pressat pris / 6 timmar', 2500, 6, 200, 1), ('Bas / 4 timmar', 3900, 4, 250, 2), ('Effektiv / 3 timmar', 4900, 3, 250, 3)) SELECT case_name AS \"case\", price_sek, hours, variable_cost_sek, price_sek - (hours * 500) - variable_cost_sek AS contribution_sek, ROUND((price_sek - (hours * 500) - variable_cost_sek) * 100.0 / price_sek) AS contribution_margin_pct, sort_order AS \"order\" FROM assumptions ORDER BY sort_order;",
+          "metric_definitions": [
+            "Arbetskostnad = leveranstimmar × 500 kr.",
+            "Bidrag = pris − arbetskostnad − rörlig kostnad.",
+            "Bidragsmarginal = bidrag ÷ pris."
+          ]
+        }
+      }
+    ],
+    "charts": [
+      {
+        "id": "market-scenarios",
+        "title": "Årlig svensk marknad i tre scenarier",
+        "subtitle": "Modellerad intäktspool för företag med 10–249 sysselsatta; Mkr per år, inte observerad branschomsättning",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "Hur stor kan den årliga svenska intäktspoolen vara för en avgränsad, mänskligt granskad webbaudit?",
+        "rationale": "Ett enkelt stapeldiagram gör den stora känsligheten för köparandel och pris tydlig utan att ge sken av en exakt prognos.",
+        "type": "bar",
+        "dataset": "market_scenarios",
+        "sourceId": "market-model",
+        "encodings": {
+          "x": {
+            "field": "scenario",
+            "type": "nominal",
+            "label": "Scenario"
+          },
+          "y": {
+            "field": "annual_market_msek",
+            "type": "quantitative",
+            "format": "number",
+            "label": "Årlig marknadspool",
+            "unit": "Mkr"
+          },
+          "tooltip": [
+            {
+              "field": "buyer_share_pct",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Antagen köparandel",
+              "unit": "%"
+            },
+            {
+              "field": "average_price_sek",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Antaget snittpris",
+              "unit": "kr"
+            },
+            {
+              "field": "estimated_buyers",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Modellerade köp per år"
+            }
+          ]
+        },
+        "valueFormat": "number",
+        "unit": "Mkr",
+        "layout": "full",
+        "maxRows": 3
+      }
+    ],
+    "tables": [
+      {
+        "id": "price-benchmarks",
+        "title": "Prisbild och substitut",
+        "subtitle": "Publika listpriser kontrollerade 31 augusti 2026; scope och grad av mänsklig granskning skiljer sig",
+        "showDescription": true,
+        "dataset": "price_benchmarks",
+        "sourceId": "price-scan",
+        "density": "spacious",
+        "layout": "full",
+        "defaultSort": {
+          "field": "order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "offer",
+            "label": "Erbjudande",
+            "type": "text"
+          },
+          {
+            "field": "price",
+            "label": "Publikt pris",
+            "type": "text"
+          },
+          {
+            "field": "order",
+            "label": "Prisordning",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "unit-economics-table",
+        "title": "Enhetskalkyl per audit",
+        "subtitle": "500 kr per arbetstimme som ekonomisk kostnad; före försäljningstid, skatt och fasta kostnader",
+        "showDescription": true,
+        "dataset": "unit_economics",
+        "sourceId": "unit-economics",
+        "density": "spacious",
+        "layout": "full",
+        "defaultSort": {
+          "field": "order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "case",
+            "label": "Fall",
+            "type": "text"
+          },
+          {
+            "field": "price_sek",
+            "label": "Pris exkl. moms, kr",
+            "format": "number"
+          },
+          {
+            "field": "contribution_sek",
+            "label": "Bidrag, kr",
+            "format": "number",
+            "movement": true
+          },
+          {
+            "field": "contribution_margin_pct",
+            "label": "Bidragsmarginal, %",
+            "format": "number",
+            "movement": true
+          },
+          {
+            "field": "order",
+            "label": "Ordning",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "report-title",
+        "type": "markdown",
+        "body": "# DivineList – marknadsbedömning"
+      },
+      {
+        "id": "executive-summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n- **Ja — det finns en verklig betalningsmarknad, men inte för ännu en automatisk webbpoäng.** Gratis och billiga verktyg äger redan den enkla skanningen. DivineLists chans är en mänskligt verifierad slutkontroll med bevis, tre prioriterade rotorsaker och omtest.\n- **Webbyråer är den bästa första kunden.** De har återkommande lanseringar, kan lämna staging- eller verktygsunderlag och har ett konkret behov av att minska pinsamma fel före kundöverlämning. Småföretag köper oftare en fix eller ett affärsresultat än en fristående diagnos.\n- **Det kan bli lönsamt som en produktiserad tjänst, inte som färdig SaaS i dag.** Sikta efter betapiloten på cirka 3 900 kr exklusive moms och högst fyra leveranstimmar. Vid långsam evidensinsamling eller prispress mot 2 000 kr försvinner marginalen snabbt.\n- **Bygg inte mer innan någon betalar.** Sälj tre begränsade pilotplatser till 2 900 kr, mät faktisk arbetstid och be om ett återkommande byråupplägg. Fortsätt bara om minst tre piloter blir betalda och normalleveransen kan hållas under fyra timmar."
+      },
+      {
+        "id": "market-exists",
+        "type": "markdown",
+        "body": "## Marknaden finns, men den är redan full av skannrar\n\nSverige har en stor installerad bas: den senaste EU-baserade SME-uppskattningen anger **37 498 företag med 10–249 sysselsatta**, och Eurostat anger att **90,2 procent av svenska företag med minst 10 sysselsatta hade en webbplats 2025**. Det ger en grov, jämförbar bas på cirka **33 823 företagswebbplatser**. Göteborgsregionen hade samtidigt 132 618 arbetsställen och 8 530 nystartade företag under 2025, vilket räcker för ett lokalt säljurval utan att DivineList behöver börja nationellt.\n\nDet är dock inte samma sak som 33 823 köpare. I modellen nedan köper endast 2–10 procent en sådan tjänst under ett år. Spannet visar möjlighetens känslighet; det är inte en prognos.",
+        "sourceId": "market-model"
+      },
+      {
+        "id": "market-chart",
+        "type": "chart",
+        "chartId": "market-scenarios",
+        "layout": "full"
+      },
+      {
+        "id": "competition",
+        "type": "markdown",
+        "body": "## Prisgapet visar var DivineList måste ligga\n\n**Den nedre delen av marknaden är en råvara.** Ahrefs erbjuder en kostnadsfri audit av verifierade sajter med 170+ SEO-kontroller, Screaming Frog kan crawla 500 URL:er gratis och svenska Sajtanalys säljer en rapport för 199 kr. En kund kommer därför inte att betala flera tusen kronor för att få fler automatiska varningar.\n\n**Det finns däremot ett betalningsgap mellan automatisk rapport och specialistprojekt.** Webperf tar 2 000 kr för en automatisk helsajtsrapport, SynligWebb listar en SEO-revision för 6 000 kr och en svensk leverantör anger 10 000–30 000 kr som typiskt spann för en teknisk plus innehållsmässig SEO-audit. En DivineList-tjänst kring 3 900 kr är rimlig bara om den innehåller en verklig mänsklig bedömning, prioritering, ansvarig sign-off och ett omtest."
+      },
+      {
+        "id": "sellable-offer",
+        "type": "markdown",
+        "body": "## Sälj utfallet — använd DivineList bakom kulisserna\n\n**Rekommenderat erbjudande:** *Verifierad webbkontroll före leverans*. En webbyrå lämnar 3–5 representativa sidtyper, staging/live-adress och tillåtna mätunderlag. Du levererar en vitmärkt rapport med högst tre oberoende, verifierade rotorsaker, evidens per fynd, konkret åtgärd, 20 minuters genomgång och ett omtest inom 14 dagar.\n\n**Betapris:** 2 900 kr exklusive moms för de första tre betalda piloterna. **Standardpris efter validering:** 3 900 kr. Ett möjligt återkommande byråpaket är 5 900–7 900 kr per månad för två definierade releasekontroller, men det ska inte erbjudas förrän leveranstiden är uppmätt.\n\nSäljfrasen kan vara: *“Vi gör en oberoende slutkontroll innan sajten lämnas över. Ni får tre bevisade problem att fixa — inte femtio automatiska varningar — plus ett omtest som ni kan visa kunden.”*\n\nPTS tillsyn av e-handel efter att tillgänglighetslagen började gälla den 28 juni 2025 stärker behovet i vissa segment. Det får användas som segmenteringssignal för e-handel och andra uttryckligen omfattade tjänster, inte som ett påstående att alla privata webbplatser omfattas.",
+        "sourceId": "accessibility-demand"
+      },
+      {
+        "id": "readiness",
+        "type": "markdown",
+        "body": "## Produkten är en stark intern motor, men inte säljfärdig som automatisk tjänst\n\nDen lokala kodbasen klarade den 31 augusti **78 av 78 auditregressioner** och TypeScript-kontrollen. Det är ett bra bevis på determinism och försiktiga evidensgrindar.\n\nMen den aktuella V2.3-statusen har **noll publikt aktiva regler**, saknar en ny full cross-runtime E2E efter kontraktsbytet och markerar aktuellt företags- och evidensunderlag som **FAIL / NO-GO**. DivineList samlar dessutom inte själv in en webbplats. Du kan därför sälja en manuellt granskad betatjänst där DivineList är intern QA, men inte lova att den nuvarande appen automatiskt bevisar webbplatsfel eller köpbehov.",
+        "sourceId": "divinelist-status"
+      },
+      {
+        "id": "economics",
+        "type": "markdown",
+        "body": "## Lönsamheten avgörs av timmar per audit\n\nKalkylen värderar din egen tid till 500 kr per timme och räknar 200–250 kr i rörlig kostnad. Den är avsiktligt strängare än en ren kontantmarginal. **Basfallet ger cirka 1 650 kr i bidrag, 42 procent, vid 3 900 kr och fyra leveranstimmar.** Om en billig order tar sex timmar blir bidraget negativt redan innan säljtiden är med.\n\nDetta kan alltså bli en sund sidoverksamhet eller en dörröppnare till webbfixar, men den första versionen är inte en självgående SaaS-vinst. Ett rimligt förstaårsintervall är 12–48 engångsauditer, cirka 35 000–187 000 kr i omsättning vid pilot- respektive standardpris. Återkommande byråavtal behövs för att göra intäkten stabil."
+      },
+      {
+        "id": "next-steps",
+        "type": "markdown",
+        "body": "## Gör ett betalt marknadstest innan mer produktarbete\n\n1. **Paketera ett enda erbjudande.** Använd namnet *Verifierad webbkontroll före leverans*; låt DivineList vara metoden bakom tjänsten.\n2. **Skapa ett enda exempel.** Visa tre verifierade rotorsaker, evidens, åtgärd och före/efter-omtest på en egen eller uttryckligen godkänd testsajt.\n3. **Prata med 10 webbyråer och erbjud tre betaplatser för 2 900 kr.** Fråga vem som i dag gör slutkontrollen, vad ett missat fel kostar och om rapporten måste kunna vitmärkas. Ingen outreach har gjorts i denna analys.\n4. **Mät varje minut.** Separera evidensinsamling, granskning, rapport, möte, omtest och försäljning.\n5. **Använd en hård fortsättningsgrind.** Fortsätt om minst tre piloter blir betalda inom 20 kvalificerade samtal, medianleveransen är högst fyra timmar och minst två köpare vill beställa igen. Om grinden missas: ändra erbjudandet eller sälj fixen tillsammans med audit — bygg inte fler regler."
+      },
+      {
+        "id": "further-questions",
+        "type": "markdown",
+        "body": "## Frågor som piloten måste besvara\n\n- Betalar byrån för oberoende QA, eller förväntar den sig att detta redan ingår i utvecklingen?\n- Kan byrån lämna stabil stagingåtkomst och befintliga Lighthouse, crawl- eller accessibility-underlag utan friktion?\n- Är vitmärkning, före/efter-bevis eller själva problemlistan den viktigaste delen?\n- Köper kunden en fristående kontroll, eller måste åtgärd och omtest paketeras tillsammans?\n- Vilka 10–20 regler kan först kalibreras med verkliga mänskliga reviews, i stället för att försöka sälja alla 120 samtidigt?"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and assumptions\n\n- Marknadsstorleken är en transparent scenarioanalys, inte observerad försäljning. Den viktigaste osäkerheten är den årliga köparandelen.\n- SME-antalet är en 2024-estimering och webbplatsandelen avser 2025; mikroföretag med 0–9 sysselsatta är avsiktligt exkluderade för att hålla budget- och webbplatsdenominatorn jämförbar.\n- Konkurrentpriserna är leverantörernas egna listpriser och tjänsterna har olika omfattning. De kan ändras efter rapportdatumet.\n- Inga kundintervjuer, betalningsförsök eller verkliga DivineList-piloter ingår. Viljan att betala är därför fortfarande obevisad.\n- Tillgänglighetslagen gäller vissa produkter och tjänster. Juridisk efterlevnad får inte säljas som universellt löfte och en automatisk kontroll ersätter inte en fullständig expertgranskning.\n- Beräknat bidrag är före skatt, fast programvaruutveckling, marknadsföring, support och kostnaden för misslyckade säljsamtal."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-31T12:00:00.000Z",
+    "status": "ready",
+    "datasets": {
+      "market_scenarios": [
+        {
+          "scenario": "Låg",
+          "addressable_sites": 33823,
+          "buyer_share_pct": 2,
+          "average_price_sek": 2000,
+          "estimated_buyers": 676,
+          "annual_market_msek": 1.35
+        },
+        {
+          "scenario": "Bas",
+          "addressable_sites": 33823,
+          "buyer_share_pct": 5,
+          "average_price_sek": 4000,
+          "estimated_buyers": 1691,
+          "annual_market_msek": 6.76
+        },
+        {
+          "scenario": "Hög",
+          "addressable_sites": 33823,
+          "buyer_share_pct": 10,
+          "average_price_sek": 7500,
+          "estimated_buyers": 3382,
+          "annual_market_msek": 25.37
+        }
+      ],
+      "price_benchmarks": [
+        {
+          "offer": "Ahrefs Free",
+          "price": "0 kr",
+          "delivery": "170+ tekniska och on-page SEO-problem för verifierade sajter; 5 000 crawl credits per månad",
+          "order": 1
+        },
+        {
+          "offer": "Screaming Frog SEO Spider",
+          "price": "0 kr / £199 per år",
+          "delivery": "500 URL:er gratis; licens tar bort gränsen och öppnar avancerad konfiguration",
+          "order": 2
+        },
+        {
+          "offer": "Sajtanalys",
+          "price": "199 kr",
+          "delivery": "Svensk rapport med 13 områden och rekommendationer via e-post",
+          "order": 3
+        },
+        {
+          "offer": "Webperf Premium Audit",
+          "price": "2 000 kr exkl. moms",
+          "delivery": "Automatisk audit av upp till 1 000 sidor, sex områden och rådata",
+          "order": 4
+        },
+        {
+          "offer": "SynligWebb SEO-revision",
+          "price": "6 000 kr",
+          "delivery": "Teknisk SEO, on-page, konkurrenter och backlinks i PDF-rapport",
+          "order": 5
+        },
+        {
+          "offer": "Svenskt uppgivet SEO-auditspann",
+          "price": "10 000–30 000 kr",
+          "delivery": "Leverantörsuppgivet typiskt projektpris för teknisk plus innehållsmässig audit",
+          "order": 6
+        }
+      ],
+      "unit_economics": [
+        {
+          "case": "Pressat pris / 6 timmar",
+          "price_sek": 2500,
+          "hours": 6,
+          "variable_cost_sek": 200,
+          "contribution_sek": -700,
+          "contribution_margin_pct": -28,
+          "order": 1
+        },
+        {
+          "case": "Bas / 4 timmar",
+          "price_sek": 3900,
+          "hours": 4,
+          "variable_cost_sek": 250,
+          "contribution_sek": 1650,
+          "contribution_margin_pct": 42,
+          "order": 2
+        },
+        {
+          "case": "Effektiv / 3 timmar",
+          "price_sek": 4900,
+          "hours": 3,
+          "variable_cost_sek": 250,
+          "contribution_sek": 3150,
+          "contribution_margin_pct": 64,
+          "order": 3
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "market-model",
+      "label": "Modell: 37 498 svenska företag med 10–249 sysselsatta × 90,2 % webbplatsandel × antagen köparandel × pris; EC SME Fact Sheet 2025 och Eurostat isoc_ciweb",
+      "href": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/22286.pdf",
+      "query": {
+        "engine": "SQLite",
+        "language": "sql",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "Reproducerbar scenariofråga. 31 802 små och 5 696 medelstora företag kommer från Sweden SME Fact Sheet 2025; 90,2 procents webbplatsandel kommer från Eurostat isoc_ciweb 2025. Köparandel och pris är synliga antaganden.",
+        "sql": "WITH inputs AS (SELECT 31802 AS small_firms, 5696 AS medium_firms, 0.902 AS website_share), scenarios(scenario, buyer_share, average_price_sek) AS (VALUES ('Låg', 0.02, 2000), ('Bas', 0.05, 4000), ('Hög', 0.10, 7500)) SELECT scenario, ROUND((small_firms + medium_firms) * website_share) AS addressable_sites, buyer_share * 100 AS buyer_share_pct, average_price_sek, ROUND((small_firms + medium_firms) * website_share * buyer_share) AS estimated_buyers, ROUND((small_firms + medium_firms) * website_share * buyer_share * average_price_sek / 1000000.0, 2) AS annual_market_msek FROM inputs CROSS JOIN scenarios;",
+        "tables_used": [
+          "European Commission Sweden SME Fact Sheet 2025",
+          "Eurostat isoc_ciweb 2025"
+        ],
+        "metric_definitions": [
+          "Adressbara webbplatser = (små företag + medelstora företag) × webbplatsandel.",
+          "Årlig marknadspool = adressbara webbplatser × antagen köparandel × antaget snittpris."
+        ]
+      }
+    },
+    {
+      "id": "price-scan",
+      "label": "Publika prissidor: Ahrefs, Screaming Frog, Sajtanalys, Webperf, SynligWebb och Webb+; kontrollerade 31 augusti 2026",
+      "href": "https://webperf.se/premium-audit/",
+      "query": {
+        "engine": "SQLite",
+        "language": "sql",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "SQL-frågan materialiserar de sex manuellt granskade raderna från leverantörernas publika prissidor; den skapar ingen oberoende prisstatistik.",
+        "sql": "WITH benchmarks(offer, price, delivery, sort_order) AS (VALUES ('Ahrefs Free', '0 kr', '170+ tekniska och on-page SEO-problem för verifierade sajter; 5 000 crawl credits per månad', 1), ('Screaming Frog SEO Spider', '0 kr / £199 per år', '500 URL:er gratis; licens tar bort gränsen och öppnar avancerad konfiguration', 2), ('Sajtanalys', '199 kr', 'Svensk rapport med 13 områden och rekommendationer via e-post', 3), ('Webperf Premium Audit', '2 000 kr exkl. moms', 'Automatisk audit av upp till 1 000 sidor, sex områden och rådata', 4), ('SynligWebb SEO-revision', '6 000 kr', 'Teknisk SEO, on-page, konkurrenter och backlinks i PDF-rapport', 5), ('Svenskt uppgivet SEO-auditspann', '10 000–30 000 kr', 'Leverantörsuppgivet typiskt projektpris för teknisk plus innehållsmässig audit', 6)) SELECT offer, price, delivery, sort_order AS \"order\" FROM benchmarks ORDER BY sort_order;",
+        "tables_used": [
+          "https://ahrefs.com/webmaster-tools",
+          "https://www.screamingfrog.co.uk/seo-spider/faq/",
+          "https://sajtanalys.se/",
+          "https://webperf.se/premium-audit/",
+          "https://synligwebb.se/priser/",
+          "https://webbplus.se/vad-kostar-seo/"
+        ]
+      }
+    },
+    {
+      "id": "divinelist-status",
+      "label": "DivineList V2.3 — README, produktionsstatus och lokala kontroller",
+      "query": {
+        "engine": "local-repository-review",
+        "language": "typescript-and-markdown",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "Granskning av produktkontrakt och aktuell status, kompletterad med en ny lokal körning av auditregressioner och TypeScript-typkontroll.",
+        "tables_used": [
+          "README.md",
+          "docs/PRODUCTION_V2.md",
+          "npm run test:audit: 78 av 78 PASS den 31 augusti 2026",
+          "npx tsc --noEmit: PASS den 31 augusti 2026"
+        ]
+      }
+    },
+    {
+      "id": "local-demand",
+      "label": "Business Region Göteborg — Fakta och statistik 2026/27",
+      "href": "https://www.businessregiongoteborg.se/analys-omvarld/rapport-analys/goteborgsregionens-fakta-statistik",
+      "query": {
+        "engine": "public-web-research",
+        "language": "web",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "Lokalt marknadssammanhang: 132 618 arbetsställen i Göteborgsregionen 2025 och 8 530 nystartade företag under året.",
+        "tables_used": [
+          "Business Region Göteborg, Fakta och statistik 2026/27"
+        ]
+      }
+    },
+    {
+      "id": "accessibility-demand",
+      "label": "PTS — tillsyn av e-handelstjänsters tillgänglighet",
+      "href": "https://pts.se/nyheter-och-pressmeddelanden/pts-granskar-ytterligare-11-e-handelstjansters-tillganglighet/",
+      "query": {
+        "engine": "public-web-research",
+        "language": "web",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "PTS uppger att tillgänglighetslagen började gälla den 28 juni 2025 och att myndigheten bedriver tillsyn av bland annat e-handelstjänster under 2025–2026.",
+        "tables_used": [
+          "Post- och telestyrelsen, planlagd tillsyn av e-handelstjänster"
+        ]
+      }
+    },
+    {
+      "id": "unit-economics",
+      "label": "Scenarioformel: pris − (leveranstimmar × 500 kr) − rörlig kostnad; före säljtid, skatt och fasta kostnader",
+      "query": {
+        "engine": "SQLite",
+        "language": "sql",
+        "executed_at": "2026-08-31T12:00:00.000Z",
+        "description": "Reproducerbar bidragskalkyl med 500 kr per arbetstimme som ekonomisk kostnad. Försäljningstid, skatt och fasta kostnader är exkluderade.",
+        "sql": "WITH assumptions(case_name, price_sek, hours, variable_cost_sek, sort_order) AS (VALUES ('Pressat pris / 6 timmar', 2500, 6, 200, 1), ('Bas / 4 timmar', 3900, 4, 250, 2), ('Effektiv / 3 timmar', 4900, 3, 250, 3)) SELECT case_name AS \"case\", price_sek, hours, variable_cost_sek, price_sek - (hours * 500) - variable_cost_sek AS contribution_sek, ROUND((price_sek - (hours * 500) - variable_cost_sek) * 100.0 / price_sek) AS contribution_margin_pct, sort_order AS \"order\" FROM assumptions ORDER BY sort_order;",
+        "metric_definitions": [
+          "Arbetskostnad = leveranstimmar × 500 kr.",
+          "Bidrag = pris − arbetskostnad − rörlig kostnad.",
+          "Bidragsmarginal = bidrag ÷ pris."
+        ]
+      }
+    }
+  ]
+}
